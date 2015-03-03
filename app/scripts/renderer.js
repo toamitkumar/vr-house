@@ -51,7 +51,9 @@ app.renderer = (function(){
     });
 
     // Add OrbitControls so that we can pan around with the mouse.
+      console.log("creating");
      controls = new THREE.OrbitControls(camera, renderer.domElement);
+     console.log("after");
 
   }
 

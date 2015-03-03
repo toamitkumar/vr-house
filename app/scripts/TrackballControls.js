@@ -6,9 +6,10 @@
  */
 
 THREE.OrbitControls = function ( object, domElement ) {
+  console.log("inside trackball");
   this.object = object;
   this.domElement = ( domElement !== undefined ) ? domElement : document;
-
+  console.log("event created",this.domElement);
   // API
 
   this.enabled = true;
@@ -66,7 +67,7 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 
   this.rotateLeft = function ( angle ) {
-    console.log("left");
+    console.log("left",changeEvent);
 
     if ( angle === undefined ) {
 
@@ -352,9 +353,9 @@ THREE.OrbitControls = function ( object, domElement ) {
   }
 
   function onKeyDown( event ) {
-    if ( scope.enabled === false ) return;
-    if ( scope.userPan === false ) return;
-
+    // if ( scope.enabled === false ) return;
+    // if ( scope.userPan === false ) return;
+    console.log("in keydown");
     switch ( event.keyCode ) {
 
       case scope.keys.UP:
