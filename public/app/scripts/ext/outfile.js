@@ -51,7 +51,7 @@
 	"colorSpecular" : [0.5, 0.5, 0.5],
 	"illumination" : 2,
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -65,7 +65,7 @@
 	"colorSpecular" : [0.5, 0.5, 0.5],
 	"illumination" : 2,
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -79,7 +79,7 @@
 	"colorSpecular" : [0.5, 0.5, 0.5],
 	"illumination" : 2,
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -93,7 +93,7 @@
 	"colorSpecular" : [0.5, 0.5, 0.5],
 	"illumination" : 2,
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -107,7 +107,7 @@
 	"colorSpecular" : [0.5, 0.5, 0.5],
 	"illumination" : 2,
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -121,7 +121,7 @@
 	"colorSpecular" : [0.5, 0.5, 0.5],
 	"illumination" : 2,
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -136,7 +136,7 @@
 	"illumination" : 2,
 	"mapDiffuse" : "pool_view_001.jpg",
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -164,7 +164,7 @@
 	"colorSpecular" : [0.5, 0.5, 0.5],
 	"illumination" : 2,
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -178,7 +178,7 @@
 	"colorSpecular" : [0.5, 0.5, 0.5],
 	"illumination" : 2,
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -192,7 +192,7 @@
 	"colorSpecular" : [0.5, 0.5, 0.5],
 	"illumination" : 2,
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -206,7 +206,7 @@
 	"colorSpecular" : [0.5, 0.5, 0.5],
 	"illumination" : 2,
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -220,7 +220,7 @@
 	"colorSpecular" : [0.0, 0.0, 0.0],
 	"illumination" : 1,
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -234,7 +234,7 @@
 	"colorSpecular" : [0.0, 0.0, 0.0],
 	"illumination" : 1,
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -248,7 +248,7 @@
 	"colorSpecular" : [0.5, 0.5, 0.5],
 	"illumination" : 2,
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -262,7 +262,7 @@
 	"colorSpecular" : [0.5, 0.5, 0.5],
 	"illumination" : 2,
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -276,7 +276,7 @@
 	"colorSpecular" : [0.5, 0.5, 0.5],
 	"illumination" : 2,
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -291,7 +291,7 @@
 	"illumination" : 2,
 	"mapDiffuse" : "Nature-Art-Wallpaper1.jpg",
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -306,7 +306,7 @@
 	"illumination" : 2,
 	"mapDiffuse" : "normal_ceramic_tiles_w_flowers_thumbnail1.jpg",
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -334,7 +334,7 @@
 	"colorSpecular" : [0.5, 0.5, 0.5],
 	"illumination" : 2,
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -349,7 +349,7 @@
 	"illumination" : 2,
 	"mapDiffuse" : "ContractSCSD.jpg",
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -364,7 +364,7 @@
 	"illumination" : 2,
 	"mapDiffuse" : "ContractSCSD.jpg",
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -378,7 +378,7 @@
 	"colorSpecular" : [0.5, 0.5, 0.5],
 	"illumination" : 2,
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -393,7 +393,7 @@
 	"illumination" : 2,
 	"mapDiffuse" : "50_pounds.jpg",
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -421,7 +421,7 @@
 	"colorSpecular" : [0.5, 0.5, 0.5],
 	"illumination" : 2,
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -463,7 +463,7 @@
 	"colorSpecular" : [0.0, 0.0, 0.0],
 	"illumination" : 1,
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -477,7 +477,7 @@
 	"colorSpecular" : [0.5, 0.5, 0.5],
 	"illumination" : 2,
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -491,7 +491,7 @@
 	"colorSpecular" : [0.5, 0.5, 0.5],
 	"illumination" : 2,
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -506,7 +506,7 @@
 	"illumination" : 2,
 	"mapDiffuse" : "Nature-Art-Wallpaper1.jpg",
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -521,7 +521,7 @@
 	"illumination" : 2,
 	"mapDiffuse" : "fire_art_13.jpg",
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -536,7 +536,7 @@
 	"illumination" : 2,
 	"mapDiffuse" : "ballroomdancers.jpg",
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -564,7 +564,7 @@
 	"colorSpecular" : [0.0, 0.0, 0.0],
 	"illumination" : 1,
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -578,7 +578,7 @@
 	"colorSpecular" : [0.5, 0.5, 0.5],
 	"illumination" : 2,
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -606,7 +606,7 @@
 	"colorSpecular" : [0.5, 0.5, 0.5],
 	"illumination" : 2,
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -620,7 +620,7 @@
 	"colorSpecular" : [0.5, 0.5, 0.5],
 	"illumination" : 2,
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	},
@@ -634,7 +634,7 @@
 	"colorSpecular" : [0.5, 0.5, 0.5],
 	"illumination" : 2,
 	"opticalDensity" : 1.0,
-	"specularCoef" : 96.078431,
+	"specularCoef" : 6.078431,
 	"transparency" : 1.0,
 	"transparent" : true
 	}],
