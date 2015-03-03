@@ -64,7 +64,7 @@ THREE.OrbitControls = function(object, domElement) {
 
   var phiDelta = 0;
   var thetaDelta = 0;
-  var scale = 1;
+  var scale = 0.001;
 
   var lastPosition = new THREE.Vector3();
 
