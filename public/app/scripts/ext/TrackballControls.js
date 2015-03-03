@@ -6,8 +6,10 @@
  */
 
 THREE.OrbitControls = function ( object, domElement ) {
+  console.log("inside");
   this.object = object;
   this.domElement = ( domElement !== undefined ) ? domElement : document;
+  console.log("dom",domElement);
 
   // API
 

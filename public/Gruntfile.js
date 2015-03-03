@@ -18,6 +18,10 @@ module.exports = function(grunt) {
       task0: {
         src: 'app/index.html',
         dest: 'dist/index.html'
+      },
+      task1: {
+        src: 'app/3dmodel.json',
+        dest: 'dist/3dmodel.json'
       }
     },
     jshint: {
@@ -52,7 +56,7 @@ module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
 
   grunt.registerTask('test', ['jshint', 'htmlhint', 'csslint']);
-  grunt.registerTask('build', ['copy:task0', 'useminPrepare', 'concat', 'cssmin', 'uglify', 'usemin']);
+  grunt.registerTask('build', ['copy:task0', 'copy:task1', 'useminPrepare', 'concat', 'cssmin', 'uglify', 'usemin']);
   grunt.registerTask('default', ['test', 'build']);
 
   grunt.registerMultiTask('log', 'Log stuff.', function() {
