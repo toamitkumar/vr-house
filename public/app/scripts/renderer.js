@@ -21,7 +21,7 @@ app.renderer = (function() {
         document.body.appendChild(renderer.domElement);
 
         // Create a camera, zoom it out from the model a bit, and add it to the scene.
-        camera = new THREE.PerspectiveCamera(90, WIDTH / HEIGHT, 1, 100000);
+        camera = new THREE.PerspectiveCamera(90, WIDTH / HEIGHT, 1, 100);
         camera.position.set(5, 9, 0);
         scene.add(camera);
 
@@ -41,18 +41,27 @@ app.renderer = (function() {
         // Set the background color of the scene.
         //renderer.setClearColorHex(0x333F47, 1);
 
-        var dirLight = new THREE.DirectionalLight(0xffffff, 1);
-        dirLight.position.set(100, 100, 50);
-        scene.add(dirLight);
+        // var dirLight = new THREE.DirectionalLight(0xffffff, 1);
+        // dirLight.position.set(100, 100, 50);
+        // scene.add(dirLight);
 
-        var lightPoint = new THREE.PointLight(0xffffff, 3, 150);
-        lightPoint.position.set(70, 5, 70);
-        scene.add(lightPoint);
-        scene.add(new THREE.PointLightHelper(lightPoint, 3));
+        // var lightPoint = new THREE.PointLight(0xE8E4E4, 3, 150);
+        // lightPoint.position.set(70, 5, 70);
+        // scene.add(lightPoint);
+        // scene.add(new THREE.PointLightHelper(lightPoint, 3));
 
-        var ambLight = new THREE.AmbientLight(0x404040);
-        scene.add(ambLight);
+        // var ambLight = new THREE.AmbientLight(0x404040);
+        // scene.add(ambLight);
 
+
+
+
+    var light = new THREE.PointLight(0xFFFFDD);
+    light.position.set(15, 10, 15);
+
+    var light2 = new THREE.PointLight(0xFFFFDD);
+    light.position.set(1, 1, 1);
+    scene.add(light2);
 
         // Load in the mesh and add it to the scene.
         var loader = new THREE.JSONLoader();
