@@ -6,7 +6,6 @@
  */
 
 THREE.OrbitControls = function ( object, domElement ) {
-
   this.object = object;
   this.domElement = ( domElement !== undefined ) ? domElement : document;
 
@@ -67,6 +66,7 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 
   this.rotateLeft = function ( angle ) {
+    console.log("left");
 
     if ( angle === undefined ) {
 
@@ -79,6 +79,7 @@ THREE.OrbitControls = function ( object, domElement ) {
   };
 
   this.rotateRight = function ( angle ) {
+    console.log("right");
 
     if ( angle === undefined ) {
 
@@ -91,6 +92,7 @@ THREE.OrbitControls = function ( object, domElement ) {
   };
 
   this.rotateUp = function ( angle ) {
+    console.log("up");
 
     if ( angle === undefined ) {
 
@@ -103,6 +105,7 @@ THREE.OrbitControls = function ( object, domElement ) {
   };
 
   this.rotateDown = function ( angle ) {
+    console.log("down");
 
     if ( angle === undefined ) {
 
@@ -115,6 +118,7 @@ THREE.OrbitControls = function ( object, domElement ) {
   };
 
   this.zoomIn = function ( zoomScale ) {
+    console.log("zoomin");
 
     if ( zoomScale === undefined ) {
 
@@ -127,6 +131,7 @@ THREE.OrbitControls = function ( object, domElement ) {
   };
 
   this.zoomOut = function ( zoomScale ) {
+    console.log("zoomout");
 
     if ( zoomScale === undefined ) {
 
@@ -149,6 +154,7 @@ THREE.OrbitControls = function ( object, domElement ) {
   };
 
   this.update = function () {
+    console.log("update");
 
     var position = this.object.position;
     var offset = position.clone().sub( this.center );
@@ -351,7 +357,7 @@ THREE.OrbitControls = function ( object, domElement ) {
 
     switch ( event.keyCode ) {
 
-      /*case scope.keys.UP:
+      case scope.keys.UP:
         scope.pan( new THREE.Vector3( 0, 1, 0 ) );
         break;
       case scope.keys.BOTTOM:
@@ -363,7 +369,7 @@ THREE.OrbitControls = function ( object, domElement ) {
       case scope.keys.RIGHT:
         scope.pan( new THREE.Vector3( 1, 0, 0 ) );
         break;
-      */
+      
       case scope.keys.ROTATE:
         state = STATE.ROTATE;
         break;
