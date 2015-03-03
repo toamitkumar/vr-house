@@ -46,6 +46,7 @@
     "$":false,
     "d3":false,
     "app":true,
-    "md5":true
+    "md5":true,
+    "THREE":true
   }
 }
