@@ -18,10 +18,14 @@ module.exports = function(grunt) {
       task0: {
         src: 'app/index.html',
         dest: 'dist/index.html'
+      },
+      task1: {
+        src: 'app/3dmodel.json',
+        dest: 'dist/3dmodel.json'
       }
     },
     jshint: {
-      files: ['Gruntfile.js', 'app/scripts/**/*.js', 'test/**/*.js','!app/js/md5.js'],
+      files: ['Gruntfile.js', 'app/scripts/**/*.js', 'test/**/*.js', '!app/scripts/ext/*.js'],
 
 
       options: {
@@ -38,18 +42,26 @@ module.exports = function(grunt) {
       files: ['<%= jshint.files %>'],
       tasks: ['jshint', 'qunit']
     },
+    connect: {
+      server: {
+        options: {
+          port: 9001,
+          base: 'app'
+        }
+      }
+    },
 
   });
 
   require('load-grunt-tasks')(grunt);
 
-  grunt.registerTask('test', ['jshint', 'htmlhint','csslint']);
-  grunt.registerTask('build', ['copy:task0', 'useminPrepare', 'concat', 'cssmin', 'uglify', 'usemin']);
+  grunt.registerTask('test', ['jshint', 'htmlhint', 'csslint']);
+  grunt.registerTask('build', ['copy:task0', 'copy:task1', 'useminPrepare', 'concat', 'cssmin', 'uglify', 'usemin']);
   grunt.registerTask('default', ['test', 'build']);
 
   grunt.registerMultiTask('log', 'Log stuff.', function() {
     grunt.log.writeln(this.target + ': ' + this.data);
-  }); 
- 
+  });
+
 
 };
