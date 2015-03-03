@@ -161,7 +161,7 @@ THREE.OrbitControls = function(object, domElement) {
     if (app.renderer.getCameraPosition().y < 0) {
       distance = new THREE.Vector3(0, 1, 0);
       reset(this);
-    }else if (app.renderer.getCameraPosition().y > 12) {
+    }else if (app.renderer.getCameraPosition().y > 62) {
       distance = new THREE.Vector3(0, -1, 0);
       reset(this);
     } else if (app.renderer.getCameraPosition().x > 10) {
