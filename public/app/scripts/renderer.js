@@ -16,6 +16,7 @@ app.renderer = (function() {
 
         // Create a renderer and add it to the DOM.
         renderer = new THREE.WebGLRenderer();
+        
         renderer.setSize(WIDTH, HEIGHT);
         renderer.autoClear = false;
         document.body.appendChild(renderer.domElement);
@@ -49,6 +50,11 @@ app.renderer = (function() {
         lightPoint.position.set(70, 5, 70);
         scene.add(lightPoint);
         scene.add(new THREE.PointLightHelper(lightPoint, 3));
+
+        // var lightPoint1 = new THREE.PointLight(0xffffff, 3, 150);
+        // lightPoint1.position.set(0, 0, 0);
+        // scene.add(lightPoint1);
+        // scene.add(new THREE.PointLightHelper(lightPoint1, 3));
 
         var ambLight = new THREE.AmbientLight(0x404040);
         scene.add(ambLight);
