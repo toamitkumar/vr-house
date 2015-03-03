@@ -10,8 +10,8 @@
 </head>
 
 <body>
-    <script src="three.min.js"></script>
-    <script src="TrackballControls.js"></script>
+    <script src="scripts/three.min.js"></script>
+    <script src="scripts/TrackballControls.js"></script>
     <script>
     // Set up the scene, camera, and renderer as global variables.
     var scene, camera, renderer;
@@ -51,7 +51,7 @@
         // Set the background color of the scene.
         //renderer.setClearColorHex(0x333F47, 1);
 
-        var ambientLight = new THREE.AmbientLight(0x333F47111111);
+        var ambientLight = new THREE.AmbientLight(0x404040);
         scene.add(ambientLight);
 
         var light = new THREE.PointLight(0xFFFFDD);
@@ -63,7 +63,7 @@
 
         // Load in the mesh and add it to the scene.
         var loader = new THREE.JSONLoader();
-        loader.load("outfile.js", function(geometry, materials) {
+        loader.load("scripts/outfile.js", function(geometry, materials) {
             var material = new THREE.MeshLambertMaterial(materials);
             mesh = new THREE.Mesh(geometry, material);
             mesh.scale.set(1, 1, 1);
