@@ -57,7 +57,7 @@ app.renderer = (function() {
         // Load in the mesh and add it to the scene.
         var loader = new THREE.JSONLoader();
 
-        loader.load('scripts/ext/outfile.js', function(geometry, materials) {
+        loader.load('3dmodel.json', function(geometry, materials) {
             var material = new THREE.MeshFaceMaterial(materials);
             var mesh = new THREE.Mesh(geometry, material);
             mesh.scale.set(1, 1, 1);
