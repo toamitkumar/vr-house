@@ -109,6 +109,7 @@ app.renderer = (function() {
 
     cameraCube.rotation.copy(camera.rotation);
 
+
     // Read more about requestAnimationFrame at http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
     requestAnimationFrame(animate);
 
@@ -122,6 +123,7 @@ app.renderer = (function() {
     controlsCube.update();
 
   }
+
 
   function getCameraPosition() {
     return camera.position;
