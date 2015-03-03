@@ -30,7 +30,7 @@ app.renderer = (function() {
 
         // Create a camera, zoom it out from the model a bit, and add it to the scene.
         camera = new THREE.PerspectiveCamera(60, WIDTH / HEIGHT, 0.1, 100000);
-        camera.position.set(10.2, 0.5, 1.25);
+        camera.position.set(-10, 0.5, 2.6);
         scene.add(camera);
 
         //scenecube
