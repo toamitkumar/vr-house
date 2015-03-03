@@ -16,7 +16,7 @@ THREE.OrbitControls = function(object, domElement) {
 
   this.center = new THREE.Vector3();
 
-  this.userZoom = true;
+  this.userZoom = false;
   this.userZoomSpeed = 1.0;
 
   this.userRotate = true;
@@ -284,6 +284,7 @@ THREE.OrbitControls = function(object, domElement) {
     if (state === STATE.ROTATE) {
 
       rotateEnd.set(event.clientX, event.clientY);
+      // rotateEnd.set(app.renderer.getCameraPosition().x,app.renderer.getCameraPosition().y);
       rotateDelta.subVectors(rotateEnd, rotateStart);
 
       scope.rotateLeft(2 * Math.PI * rotateDelta.x / PIXELS_PER_ROUND * scope.userRotateSpeed);
