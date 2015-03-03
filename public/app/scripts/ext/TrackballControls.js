@@ -157,11 +157,36 @@ THREE.OrbitControls = function(object, domElement) {
 
     this.pan = function(distance) {
 
-        // distance.transformDirection(this.object.matrix);
-        // distance.multiplyScalar(scope.userPanSpeed);
+    if (app.renderer.getCameraPosition().y < 0) {
+      distance = new THREE.Vector3(0, 1, 0);
+      reset(this);
+    }else if (app.renderer.getCameraPosition().y > 12) {
+      distance = new THREE.Vector3(0, -1, 0);
+      reset(this);
+    } else if (app.renderer.getCameraPosition().x > 10) {
+      distance = new THREE.Vector3(-1, 0, 0);
+      reset(this);
+    }else if (app.renderer.getCameraPosition().x < -18) {
+      distance = new THREE.Vector3(1, 0, 0);
+      reset(this);
+    }else if (app.renderer.getCameraPosition().z < -3.5) {
+      distance = new THREE.Vector3(0, 0, 1);
+      reset(this);
+    }else if (app.renderer.getCameraPosition().z >21) {
+      distance = new THREE.Vector3(0, 0, -1);
+      reset(this);
+    } else {
+      distance.transformDirection(this.object.matrix);
+      distance.multiplyScalar(scope.userPanSpeed);
+      this.object.position.add(distance);
+      this.center.add(distance);
+    }
 
-        // this.object.position.add(distance);
-        // this.center.add(distance);
+    function reset(context) {
+      distance.multiplyScalar(scope.userPanSpeed);
+      context.object.position.add(distance);
+      context.center.add(distance);
+    }
 
         if (app.renderer.getCameraPosition().y > 0) {
 
@@ -374,46 +399,44 @@ THREE.OrbitControls = function(object, domElement) {
 
     }
 
-    function onKeyDown(event) {
+  }
 
-        console.log(event.keyCode);
+  function onKeyDown(event) {
 
-        if (scope.enabled === false) return;
-        if (scope.userPan === false) return;
+    if (scope.enabled === false) return;
+    if (scope.userPan === false) return;
 
-        switch (event.keyCode) {
+    switch (event.keyCode) {
 
-            case scope.keys.UP:
-                scope.pan(new THREE.Vector3(0, 0, -1));
-                break;
-            case scope.keys.BOTTOM:
-                scope.pan(new THREE.Vector3(0, 0, 1));
-                break;
-            case scope.keys.LEFT:
-                scope.pan(new THREE.Vector3(-1, 0, 0));
-                break;
-            case scope.keys.RIGHT:
-                scope.pan(new THREE.Vector3(1, 0, 0));
-                break;
+      case scope.keys.UP:
+        scope.pan(new THREE.Vector3(0, 0, -1));
+        break;
+      case scope.keys.BOTTOM:
+        scope.pan(new THREE.Vector3(0, 0, 1));
+        break;
+      case scope.keys.LEFT:
+        scope.pan(new THREE.Vector3(-1, 0, 0));
+        break;
+      case scope.keys.RIGHT:
+        scope.pan(new THREE.Vector3(1, 0, 0));
+        break;
 
-            case scope.keys.ASCEND:
-                scope.pan(new THREE.Vector3(0, 1, 0));
-                break;
-            case scope.keys.DESCEND:
-                scope.pan(new THREE.Vector3(0, -1, 0));
-                break;
+      case scope.keys.ASCEND:
+        scope.pan(new THREE.Vector3(0, 1, 0));
+        break;
+      case scope.keys.DESCEND:
+        scope.pan(new THREE.Vector3(0, -1, 0));
+        break;
 
-            case scope.keys.ROTATE:
-                state = STATE.ROTATE;
-                break;
-            case scope.keys.ZOOM:
-                state = STATE.ZOOM;
-                break;
-            case scope.keys.PAN:
-                state = STATE.PAN;
-                break;
-
-        }
+      case scope.keys.ROTATE:
+        state = STATE.ROTATE;
+        break;
+      case scope.keys.ZOOM:
+        state = STATE.ZOOM;
+        break;
+      case scope.keys.PAN:
+        state = STATE.PAN;
+        break;
 
     }
 
