@@ -3,3 +3,4 @@ public/.tmp
 public/.sass-cache
 bower_components
 public/node_modules
+npm-debug.log

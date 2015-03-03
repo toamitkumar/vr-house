@@ -1,0 +1,28 @@
+{
+  "name": "Cool-House3d",
+  "version": "1.0.0",
+  "description": "Cool House using ThreeJS",
+  "engine": "node >= 0.10.26",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sohamkamani/cool-house.git"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "npm test"
+  },
+  "keywords": [
+    "house 3d"
+  ],
+  "author": "Cool House Team",
+  "license": "ISC",
+  "dependencies": {
+    "async": "*",
+    "boom": "^2.6.1",
+    "hapi": "^8.1.0",
+    "joi": "^5.1.0",
+    "lodash": "*",
+    "superagent": "^0.21.0"
+  }
+}
