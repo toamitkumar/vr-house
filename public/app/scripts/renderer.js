@@ -22,7 +22,7 @@ app.renderer = (function() {
 
         // Create a camera, zoom it out from the model a bit, and add it to the scene.
         camera = new THREE.PerspectiveCamera(90, WIDTH / HEIGHT, 1, 100000);
-        camera.position.set(5, 9, 0);
+        camera.position.set(10.2, 0.5, 1.25);
         scene.add(camera);
 
         //scenecube
@@ -57,7 +57,7 @@ app.renderer = (function() {
         // Load in the mesh and add it to the scene.
         var loader = new THREE.JSONLoader();
 
-        loader.load('3dmodel.json', function(geometry, materials) {
+        loader.load('scripts/ext/outfile.js', function(geometry, materials) {
             var material = new THREE.MeshFaceMaterial(materials);
             var mesh = new THREE.Mesh(geometry, material);
             mesh.scale.set(1, 1, 1);
@@ -114,8 +114,13 @@ app.renderer = (function() {
 
     }
 
+    function getCameraPosition () {
+      return camera.position;
+    }
+
     return {
         init: init,
-        animate: animate
+        animate: animate,
+        getCameraPosition: getCameraPosition
     };
 })();
