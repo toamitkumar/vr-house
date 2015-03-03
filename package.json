@@ -1,12 +1,12 @@
 {
-  "name": "jschannel.com",
-  "version": "1.1.0",
-  "description": "JSChannel website",
+  "name": "Cool-House3d",
+  "version": "1.0.0",
+  "description": "Cool House using ThreeJS",
   "engine": "node >= 0.10.26",
-  "main": "app.js",
+  "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "http://github.com/toamitkumar/jschannel.git"
+    "url": "https://github.com/sohamkamani/cool-house.git"
   },
   "scripts": {
     "start": "node server.js",
