@@ -1,0 +1,23 @@
+{
+  "name": "web_display_app",
+  "version": "0.0.0",
+  "homepage": "https://github.com/sohamkamani/mock-app-web-view",
+  "main": "dontknow",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-awesome": "~4.3.0",
+    "font-awesome-animation": "~0.0.6",
+    "lodash": "~3.2.0",
+    "normalize-css": "~3.0.2"
+  }
+}
