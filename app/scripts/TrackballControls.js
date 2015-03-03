@@ -144,6 +144,7 @@ THREE.OrbitControls = function ( object, domElement ) {
   };
 
   this.pan = function ( distance ) {
+    console.log("pan",distance);
 
     distance.transformDirection( this.object.matrix );
     distance.multiplyScalar( scope.userPanSpeed );
@@ -351,17 +352,17 @@ THREE.OrbitControls = function ( object, domElement ) {
   }
 
   function onKeyDown( event ) {
-
     if ( scope.enabled === false ) return;
     if ( scope.userPan === false ) return;
 
     switch ( event.keyCode ) {
 
       case scope.keys.UP:
-        scope.pan( new THREE.Vector3( 0, 1, 0 ) );
+        console.log("key up");
+        scope.pan( new THREE.Vector3( 0, 1, 0) );
         break;
       case scope.keys.BOTTOM:
-        scope.pan( new THREE.Vector3( 0, - 1, 0 ) );
+        scope.pan( new THREE.Vector3( 0,-1, 0 ) );
         break;
       case scope.keys.LEFT:
         scope.pan( new THREE.Vector3( - 1, 0, 0 ) );
