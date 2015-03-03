@@ -93,8 +93,8 @@ app.renderer = (function() {
 
     }
 
-    function addPointLight(x, y, z , color , intensity , penetration) {
-        var bedLight = new THREE.PointLight(color , intensity , penetration);
+    function addPointLight(x, y, z, color, intensity, penetration) {
+        var bedLight = new THREE.PointLight(color, intensity, penetration);
         bedLight.position.set(x, y, z);
         scene.add(bedLight);
         scene.add(new THREE.PointLightHelper(bedLight, 2.5));
@@ -102,18 +102,18 @@ app.renderer = (function() {
 
     function setLighting() {
         // var dirLight = new THREE.DirectionalLight(0xffffff, 1);
-        // dirLight.position.set(100, 100, 50);
+        // dirLight.position.set(3000, 100, 3000);
         // scene.add(dirLight);
 
         var bedLight = new THREE.PointLight(0xffffff, 2.5, 11);
         bedLight.position.set(0, 10, 5);
         scene.add(bedLight);
         scene.add(new THREE.PointLightHelper(bedLight, 2.5));
-        
-        addPointLight(0, 0.5, 5 , 0xffffff, 2.5, 11);
-        addPointLight(-5, 0.5, -1 , 0xffffff, 1, 5);
+
+        addPointLight(0, 0.5, 5, 0xffffff, 2.5, 11);
+        addPointLight(-5, 0.5, -1, 0xffffff, 1, 5);
         //addPointLight(-8.4, 0.5, 6 , 0xffffff, 2.5, 11);
-        addPointLight(3.2, 0.5, -1.3 , 0xffffff, 2.5, 11);
+        addPointLight(3.2, 0.5, -1.3, 0xffffff, 2.5, 11);
 
         var bedLight2 = new THREE.PointLight(0xffffff, 2.5, 11);
         bedLight2.position.set(-5, 10, -1);
@@ -130,6 +130,13 @@ app.renderer = (function() {
         scene.add(bedLight4);
         scene.add(new THREE.PointLightHelper(bedLight4, 2.5));
 
+
+        addPointLight(8, 2, 19.5, 0xffffff, 2.5, 11);
+        addPointLight(1.1, 2, 14.6, 0xffffff, 2.5, 11);
+        //addPointLight(-8.4, 0.5, 6 , 0xffffff, 2.5, 11);
+        addPointLight(2.4, 7.4, 13, 0xffffff, 1.5, 5);
+
+
         // var lightPoint1 = new THREE.PointLight(0xffffff, 3, 150);
         // lightPoint1.position.set(70, 5, 70);
         // scene.add(lightPoint1);
@@ -140,7 +147,11 @@ app.renderer = (function() {
         // scene.add(lightPoint2);
         // scene.add(new THREE.PointLightHelper(lightPoint2, 3));
 
-        var ambLight = new THREE.AmbientLight(0x404040);
+        var ambLight = new THREE.AmbientLight(0xffffff);
+        scene.add(ambLight);
+        var ambLight2 = new THREE.AmbientLight(0xffff);
+        scene.add(ambLight);
+        var ambLight3 = new THREE.AmbientLight(0xffffff);
         scene.add(ambLight);
     }
 
