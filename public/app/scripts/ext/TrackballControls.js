@@ -23,7 +23,7 @@ THREE.OrbitControls = function(object, domElement) {
   this.userRotateSpeed = 1.0;
 
   this.userPan = true;
-  this.userPanSpeed = 2.0;
+  this.userPanSpeed = 0.5;
 
   this.autoRotate = false;
   this.autoRotateSpeed = 2.0; // 30 seconds per round when fps is 60
@@ -71,7 +71,7 @@ THREE.OrbitControls = function(object, domElement) {
   var STATE = {
     NONE: -1,
     ROTATE: 0,
-    ZOOM: 1,
+    ZOOM: 0,
     PAN: 2
   };
   var state = STATE.NONE;
@@ -275,24 +275,25 @@ THREE.OrbitControls = function(object, domElement) {
 
   function onMouseMove(event) {
 
-    if (scope.enabled === false) return;
+    // if (scope.enabled === false) return;
 
     event.preventDefault();
 
 
 
-    if (state === STATE.ROTATE) {
+    // if (state === STATE.ROTATE) {
 
-      rotateEnd.set(event.clientX, event.clientY);
-      // rotateEnd.set(app.renderer.getCameraPosition().x,app.renderer.getCameraPosition().y);
-      rotateDelta.subVectors(rotateEnd, rotateStart);
+    rotateEnd.set(event.clientX, event.clientY);
+    // rotateEnd.set(app.renderer.getCameraPosition().x,app.renderer.getCameraPosition().y);
+    rotateDelta.subVectors(rotateEnd, rotateStart);
 
-      scope.rotateLeft(2 * Math.PI * rotateDelta.x / PIXELS_PER_ROUND * scope.userRotateSpeed);
-      scope.rotateUp(2 * Math.PI * rotateDelta.y / PIXELS_PER_ROUND * scope.userRotateSpeed);
+    scope.rotateLeft(2 * Math.PI * rotateDelta.x / PIXELS_PER_ROUND * scope.userRotateSpeed);
+    scope.rotateUp(2 * Math.PI * rotateDelta.y / PIXELS_PER_ROUND * scope.userRotateSpeed);
 
-      rotateStart.copy(rotateEnd);
+    rotateStart.copy(rotateEnd);
 
-    } else if (state === STATE.ZOOM) {
+    // }
+    if (state === STATE.ZOOM) {
 
       zoomEnd.set(event.clientX, event.clientY);
       zoomDelta.subVectors(zoomEnd, zoomStart);
