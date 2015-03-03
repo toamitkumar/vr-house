@@ -17,8 +17,8 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'bower_components/lodash/lodash.js',
-      'app/js/*.js',
-      'app/js/tests/*.js'
+      'app/scripts/*.js',
+      'app/scripts/tests/*.js'
     ],
 
 
