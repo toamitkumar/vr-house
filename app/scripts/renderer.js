@@ -15,9 +15,7 @@ app.renderer = (function(){
       HEIGHT = window.innerHeight;
 
     // Create a renderer and add it to the DOM.
-    renderer = new THREE.WebGLRenderer({
-      antialias: true
-    });
+    renderer = new THREE.WebGLRenderer();
     renderer.setSize(WIDTH, HEIGHT);
     document.body.appendChild(renderer.domElement);
 
@@ -38,27 +36,22 @@ app.renderer = (function(){
     // Set the background color of the scene.
     //renderer.setClearColorHex(0x333F47, 1);
 
-    var ambientLight = new THREE.AmbientLight(0x333F47111111);
-    scene.add(ambientLight);
-
-    var light = new THREE.PointLight(0xFFFFDD);
-    light.position.set(15, 10, 15);
-
-    var light2 = new THREE.PointLight(0xFFFFDD);
-    light.position.set(1, 1, 1);
-    scene.add(light2);
+    var dirLight = new THREE.DirectionalLight(0xffffff, 1);
+    dirLight.position.set(100, 100, 50);
+    scene.add(dirLight);
 
     // Load in the mesh and add it to the scene.
     var loader = new THREE.JSONLoader();
+
     loader.load('../../app/scripts/ext/outfile.js', function(geometry, materials) {
-      var material = new THREE.MeshLambertMaterial(materials);
+      var material = new THREE.MeshFaceMaterial(materials);
       var mesh = new THREE.Mesh(geometry, material);
       mesh.scale.set(1, 1, 1);
       scene.add(mesh);
     });
 
     // Add OrbitControls so that we can pan around with the mouse.
-    controls = new THREE.OrbitControls(camera, renderer.domElement);
+     controls = new THREE.OrbitControls(camera, renderer.domElement);
 
   }
 
