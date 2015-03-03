@@ -1,7 +1,7 @@
 app.renderer = (function() {
     // Set up the scene, camera, and renderer as global variables.
     'use strict';
-    var scene, camera, renderer, controls;
+    var scene, camera, renderer, controls, controlsCube, sceneCube, cameraCube;
 
     // init();
     // animate();
@@ -17,12 +17,17 @@ app.renderer = (function() {
         // Create a renderer and add it to the DOM.
         renderer = new THREE.WebGLRenderer();
         renderer.setSize(WIDTH, HEIGHT);
+        renderer.autoClear = false;
         document.body.appendChild(renderer.domElement);
 
         // Create a camera, zoom it out from the model a bit, and add it to the scene.
-        camera = new THREE.PerspectiveCamera(90, WIDTH / HEIGHT, 0.1, 20000);
+        camera = new THREE.PerspectiveCamera(90, WIDTH / HEIGHT, 1, 100000);
         camera.position.set(5, 9, 0);
         scene.add(camera);
+
+        //scenecube
+        cameraCube = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 1, 100000);
+        sceneCube = new THREE.Scene();
 
         // Create an event listener that resizes the renderer with the browser window.
         window.addEventListener('resize', function() {
@@ -48,10 +53,11 @@ app.renderer = (function() {
         var ambLight = new THREE.AmbientLight(0x404040);
         scene.add(ambLight);
 
+
         // Load in the mesh and add it to the scene.
         var loader = new THREE.JSONLoader();
 
-        loader.load('../../app/scripts/ext/outfile.js', function(geometry, materials) {
+        loader.load('3dmodel.json', function(geometry, materials) {
             var material = new THREE.MeshFaceMaterial(materials);
             var mesh = new THREE.Mesh(geometry, material);
             mesh.scale.set(1, 1, 1);
@@ -60,6 +66,31 @@ app.renderer = (function() {
 
         // Add OrbitControls so that we can pan around with the mouse.
         controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controlsCube = new THREE.OrbitControls(cameraCube, renderer.domElement);
+
+        //Adding cubebackground
+        var r = '../images/';
+
+        var urls = [r + 'px.jpg', r + 'nx.jpg',
+            r + 'py.jpg', r + 'ny.jpg',
+            r + 'pz.jpg', r + 'nz.jpg'
+        ];
+
+        var textureCube = THREE.ImageUtils.loadTextureCube(urls, THREE.CubeRefractionMapping);
+        var shader = THREE.ShaderLib.cube;
+        shader.uniforms.tCube.value = textureCube;
+
+        var material = new THREE.ShaderMaterial({
+
+            fragmentShader: shader.fragmentShader,
+            vertexShader: shader.vertexShader,
+            uniforms: shader.uniforms,
+            side: THREE.BackSide
+
+        });
+
+        var mesh = new THREE.Mesh(new THREE.BoxGeometry(100000, 100000, 100000), material);
+        sceneCube.add(mesh);
 
     }
 
@@ -67,12 +98,19 @@ app.renderer = (function() {
     // Renders the scene and updates the render as needed.
     function animate() {
 
+        cameraCube.rotation.copy(camera.rotation);
+
         // Read more about requestAnimationFrame at http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
         requestAnimationFrame(animate);
 
         // Render the scene.
+        renderer.clear();
+        renderer.render(sceneCube, cameraCube);
         renderer.render(scene, camera);
+
+
         controls.update();
+        controlsCube.update();
 
     }
 
