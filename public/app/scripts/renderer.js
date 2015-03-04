@@ -31,7 +31,7 @@ app.renderer = (function() {
         // Create a camera, zoom it out from the model a bit, and add it to the scene.
 
         camera = new THREE.PerspectiveCamera(60, WIDTH / HEIGHT, 0.1, 100000);
-        camera.position.set(-10.6, -0.02, 2.88);
+        camera.position.set(-55.4, 1.0, -12.4);
         scene.add(camera);
 
         //scenecube
@@ -98,7 +98,7 @@ app.renderer = (function() {
         var bedLight = new THREE.PointLight(color, intensity, penetration);
         bedLight.position.set(x, y, z);
         scene.add(bedLight);
-        //scene.add(new THREE.PointLightHelper(bedLight, 2.5));
+        scene.add(new THREE.PointLightHelper(bedLight, 2.5));
     }
 
     function setLighting() {
@@ -141,8 +141,12 @@ app.renderer = (function() {
 
         addPointLight(8, 2, 19.5, 0xffffff, 2.5, 11);
         addPointLight(1.1, 2, 14.6, 0xffffff, 2.5, 11);
+        addPointLight(10.1, 2, 14.6, 0xffffff, 2.5, 11);
         //addPointLight(-8.4, 0.5, 6 , 0xffffff, 2.5, 11);
         addPointLight(2.4, 7.4, 13, 0xffffff, 1.5, 5);
+        addPointLight(-10.06, 1.5, 4.3, 0xffffff, 1.5, 5);
+        addPointLight(0.11, 4.8, 18.1, 0xffffff, 1.5, 10);
+        addPointLight(6.2, 4.3, 9.8, 0xffffff, 1.5, 10);
 
 
 
@@ -189,6 +193,10 @@ app.renderer = (function() {
     function getCameraPosition() {
         return camera.position;
     }
+
+    // function setCameraPosition(x,y,z){
+    //     camera.lookAt(new THREE.);
+    // }
 
     return {
         init: init,
