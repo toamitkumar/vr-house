@@ -398,6 +398,12 @@ THREE.OrbitControls = function(object, domElement) {
                 app.renderer.setCameraPosition(6.3, 31.5, 18.5);
                 console.log(scale);
             break;
+            
+            case 66:
+                app.renderer.setCameraPosition(-550.4, 1.0, -20.4);
+                console.log(scale);
+                scale=0.001;
+            break;
 
 
             case scope.keys.ASCEND:
