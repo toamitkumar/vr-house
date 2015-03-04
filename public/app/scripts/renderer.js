@@ -29,12 +29,12 @@ app.renderer = (function() {
 
 
         // Create a camera, zoom it out from the model a bit, and add it to the scene.
-        camera = new THREE.PerspectiveCamera(60, WIDTH / HEIGHT, 0.1, 100000);
+        camera = new THREE.PerspectiveCamera(90, WIDTH / HEIGHT, 0.1, 100000000);
         camera.position.set(-10, 0.5, 2.6);
         scene.add(camera);
 
         //scenecube
-        cameraCube = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 1, 100000);
+        cameraCube = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 100000);
         sceneCube = new THREE.Scene();
 
         // Create an event listener that resizes the renderer with the browser window.
@@ -97,7 +97,7 @@ app.renderer = (function() {
         var bedLight = new THREE.PointLight(color, intensity, penetration);
         bedLight.position.set(x, y, z);
         scene.add(bedLight);
-        scene.add(new THREE.PointLightHelper(bedLight, 2.5));
+        //scene.add(new THREE.PointLightHelper(bedLight, 2.5));
     }
 
     function setLighting() {
@@ -108,7 +108,7 @@ app.renderer = (function() {
         var bedLight = new THREE.PointLight(0xffffff, 2.5, 11);
         bedLight.position.set(0, 10, 5);
         scene.add(bedLight);
-        scene.add(new THREE.PointLightHelper(bedLight, 2.5));
+        //scene.add(new THREE.PointLightHelper(bedLight, 2.5));
 
 
         addPointLight(0, 0.5, 5, 0xffffff, 2.5, 11);
@@ -116,13 +116,13 @@ app.renderer = (function() {
         //addPointLight(-8.4, 0.5, 6 , 0xffffff, 2.5, 11);
         addPointLight(3.2, 0.5, -1.3, 0xffffff, 2.5, 11);
 
-    
+
 
 
         var bedLight2 = new THREE.PointLight(0xffffff, 2.5, 11);
         bedLight2.position.set(-5, 10, -1);
         scene.add(bedLight2);
-        scene.add(new THREE.PointLightHelper(bedLight2, 2.5));
+        //scene.add(new THREE.PointLightHelper(bedLight2, 2.5));
 
         var bedLight3 = new THREE.PointLight(0xffffff, 2.5, 11);
         bedLight3.position.set(-8.4, 10, 6);
