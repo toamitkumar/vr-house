@@ -24,7 +24,7 @@ THREE.OrbitControls = function ( object, domElement ) {
   this.userRotateSpeed = 1.0;
 
   this.userPan = true;
-  this.userPanSpeed = 0.5;
+  this.userPanSpeed = 0.2;
 
   this.autoRotate = false;
   this.autoRotateSpeed = 2.0; // 30 seconds per round when fps is 60
@@ -173,6 +173,7 @@ THREE.OrbitControls = function ( object, domElement ) {
             distance.transformDirection(this.object.matrix);
         }
         distance.multiplyScalar(scope.userPanSpeed);
+        console.log("ecw"+scope.userPanSpeed);
         this.object.position.add(distance);
         this.center.add(distance);
 
@@ -362,12 +363,18 @@ THREE.OrbitControls = function ( object, domElement ) {
       total=total-delta;
       console.log("zooming out",delta,total);
 
-    } else if((delta<0)&&(total<20)){
+    } else if((delta<0)&&(total<30)){
 
       scope.zoomOut();
       total=total-delta;
       console.log("zoom in",delta,total);
 
+    }
+    else if(total>30){
+        total=30;
+    }
+    else if(total<0){
+        total=0;
     }
     else{
         return;
