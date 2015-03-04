@@ -67,7 +67,7 @@ THREE.OrbitControls = function(object, domElement) {
 
     var phiDelta = 0;
     var thetaDelta = 0;
-    var scale = 0.09;
+    var scale = 0.1;
 
     var lastPosition = new THREE.Vector3();
 
@@ -356,11 +356,11 @@ THREE.OrbitControls = function(object, domElement) {
      delta = - event.detail;    }
    if (( delta > 0 )&&(total>0)) {      scope.zoomIn();
      total=total-delta;
-     console.log("zooming out",delta,total);    } else if((delta<0)&&(total<300)){      scope.zoomOut();
+     console.log("zooming out",delta,total);    } else if((delta<0)&&(total<30)){      scope.zoomOut();
      total=total-delta;
      console.log("zoom in",delta,total);    }
-   else if(total>300){
-       total=300;
+   else if(total>30){
+       total=30;
    }
    else if(total<0){
        total=0;
