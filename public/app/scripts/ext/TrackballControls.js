@@ -23,8 +23,10 @@ THREE.OrbitControls = function(object, domElement) {
     this.userRotate = true;
     this.userRotateSpeed = 1.0;
 
-    this.userPan = true;
-    this.userPanSpeed = 0.5;
+
+  this.userPan = true;
+  this.userPanSpeed = 0.2;
+
 
     this.autoRotate = false;
     this.autoRotateSpeed = 2.0; // 30 seconds per round when fps is 60
@@ -65,7 +67,7 @@ THREE.OrbitControls = function(object, domElement) {
 
     var phiDelta = 0;
     var thetaDelta = 0;
-    var scale = 0.5;
+    var scale = 0.09;
 
     var lastPosition = new THREE.Vector3();
 
@@ -175,6 +177,7 @@ THREE.OrbitControls = function(object, domElement) {
             distance.transformDirection(this.object.matrix);
         }
         distance.multiplyScalar(scope.userPanSpeed);
+        console.log("ecw"+scope.userPanSpeed);
         this.object.position.add(distance);
         this.center.add(distance);
 
@@ -345,35 +348,30 @@ THREE.OrbitControls = function(object, domElement) {
 
     }
 
-    function onMouseWheel(event) {
-        if (scope.enabled === false) return;
-        if (scope.userZoom === false) return;
+    function onMouseWheel( event ) {
+   if ( scope.enabled === false ) return;
+   if ( scope.userZoom === false ) return;    var delta = 0;
+   if ( event.wheelDelta ) { // WebKit / Opera / Explorer 9
+     delta = event.wheelDelta;    } else if ( event.detail ) { // Firefox
+     delta = - event.detail;    }
+   if (( delta > 0 )&&(total>0)) {      scope.zoomIn();
+     total=total-delta;
+     console.log("zooming out",delta,total);    } else if((delta<0)&&(total<300)){      scope.zoomOut();
+     total=total-delta;
+     console.log("zoom in",delta,total);    }
+   else if(total>300){
+       total=300;
+   }
+   else if(total<0){
+       total=0;
+   }
+   else{
+       return;
+   }  
 
-        var delta = 0;
-        if (event.wheelDelta) { // WebKit / Opera / Explorer 9
-            delta = event.wheelDelta;
+ }
 
-        } else if (event.detail) { // Firefox
-            delta = -event.detail;
 
-        }
-        if ((delta > 0) && (total > 0)) {
-
-            scope.zoomIn();
-            total = total - delta;
-            console.log("zooming out", delta, total);
-
-        } else if ((delta < 0) && (total < 20)) {
-
-            scope.zoomOut();
-            total = total - delta;
-            console.log("zoom in", delta, total);
-
-        } else {
-            return;
-        }
-
-    }
 
     function onKeyDown(event) {
 
