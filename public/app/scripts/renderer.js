@@ -190,6 +190,10 @@ app.renderer = (function() {
         return camera.position;
     }
 
+    // function setCameraPosition(x,y,z){
+    //     camera.lookAt(new THREE.);
+    // }
+
     return {
         init: init,
         animate: animate,

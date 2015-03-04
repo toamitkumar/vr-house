@@ -5,37 +5,37 @@
  * @author WestLangley / http://github.com/WestLangley
  */
 
-THREE.OrbitControls = function ( object, domElement ) {
-  console.log("inside");
-  this.object = object;
-  this.domElement = ( domElement !== undefined ) ? domElement : document;
-  console.log("dom",domElement);
+THREE.OrbitControls = function(object, domElement) {
+    console.log("inside");
+    this.object = object;
+    this.domElement = (domElement !== undefined) ? domElement : document;
+    console.log("dom", domElement);
 
-  // API
+    // API
 
-  this.enabled = true;
+    this.enabled = true;
 
-  this.center = new THREE.Vector3();
+    this.center = new THREE.Vector3();
 
-  this.userZoom = true;
-  this.userZoomSpeed = 0.5;
+    this.userZoom = true;
+    this.userZoomSpeed = 0.5;
 
-  this.userRotate = true;
-  this.userRotateSpeed = 1.0;
+    this.userRotate = true;
+    this.userRotateSpeed = 1.0;
 
-  this.userPan = true;
-  this.userPanSpeed = 0.5;
+    this.userPan = true;
+    this.userPanSpeed = 0.5;
 
-  this.autoRotate = false;
-  this.autoRotateSpeed = 2.0; // 30 seconds per round when fps is 60
+    this.autoRotate = false;
+    this.autoRotateSpeed = 2.0; // 30 seconds per round when fps is 60
 
-  this.minPolarAngle = 0; // radians
-  this.maxPolarAngle = Math.PI; // radians
+    this.minPolarAngle = 0; // radians
+    this.maxPolarAngle = Math.PI; // radians
 
-  this.minDistance = 0;
-  this.maxDistance = Infinity;
+    this.minDistance = 0;
+    this.maxDistance = Infinity;
 
-  // 65 /*A*/, 83 /*S*/, 68 /*D*/
+    // 65 /*A*/, 83 /*S*/, 68 /*D*/
     this.keys = {
         LEFT: 37,
         UP: 38,
@@ -47,112 +47,114 @@ THREE.OrbitControls = function ( object, domElement ) {
         ASCEND: 85,
         DESCEND: 74
     };
-  // internals
+    // internals
 
-  var scope = this;
+    var scope = this;
 
-  var total=0;
-  var EPS = 0.000001;
-  var PIXELS_PER_ROUND = 1800;
+    var total = 0;
+    var EPS = 0.000001;
+    var PIXELS_PER_ROUND = 1800;
 
-  var rotateStart = new THREE.Vector2();
-  var rotateEnd = new THREE.Vector2();
-  var rotateDelta = new THREE.Vector2();
+    var rotateStart = new THREE.Vector2();
+    var rotateEnd = new THREE.Vector2();
+    var rotateDelta = new THREE.Vector2();
 
-  var zoomStart = new THREE.Vector2();
-  var zoomEnd = new THREE.Vector2();
-  var zoomDelta = new THREE.Vector2();
+    var zoomStart = new THREE.Vector2();
+    var zoomEnd = new THREE.Vector2();
+    var zoomDelta = new THREE.Vector2();
 
-  var phiDelta = 0;
-  var thetaDelta = 0;
-  var scale = 0.5;
+    var phiDelta = 0;
+    var thetaDelta = 0;
+    var scale = 0.5;
 
-  var lastPosition = new THREE.Vector3();
+    var lastPosition = new THREE.Vector3();
 
-   var STATE = {
+    var STATE = {
         NONE: -1,
         ROTATE: 0,
         ZOOM: 0,
         PAN: 2
     };
-  var state = STATE.NONE;
+    var state = STATE.NONE;
 
-  // events
+    // events
 
-  var changeEvent = { type: 'change' };
+    var changeEvent = {
+        type: 'change'
+    };
 
 
-  this.rotateLeft = function ( angle ) {
+    this.rotateLeft = function(angle) {
 
-    if ( angle === undefined ) {
+        if (angle === undefined) {
 
-      angle = getAutoRotationAngle();
+            angle = getAutoRotationAngle();
 
-    }
+        }
 
-    thetaDelta -= angle;
+        thetaDelta -= angle;
 
-  };
+    };
 
-  this.rotateRight = function ( angle ) {
+    this.rotateRight = function(angle) {
 
-    if ( angle === undefined ) {
+        if (angle === undefined) {
 
-      angle = getAutoRotationAngle();
+            angle = getAutoRotationAngle();
 
-    }
+        }
 
-    thetaDelta += angle;
+        thetaDelta += angle;
 
-  };
+    };
 
-  this.rotateUp = function ( angle ) {
+    this.rotateUp = function(angle) {
 
-    if ( angle === undefined ) {
+        if (angle === undefined) {
 
-      angle = getAutoRotationAngle();
+            angle = getAutoRotationAngle();
 
-    }
+        }
 
-    phiDelta -= angle;
+        phiDelta -= angle;
 
-  };
+    };
 
-  this.rotateDown = function ( angle ) {
+    this.rotateDown = function(angle) {
 
-    if ( angle === undefined ) {
+        if (angle === undefined) {
 
-      angle = getAutoRotationAngle();
+            angle = getAutoRotationAngle();
 
-    }
+        }
 
-    phiDelta += angle;
+        phiDelta += angle;
 
-  };
+    };
 
-  this.zoomIn = function ( zoomScale ) {
+    this.zoomIn = function(zoomScale) {
 
-    if ( zoomScale === undefined ) {
+        if (zoomScale === undefined) {
 
-      zoomScale = getZoomScale();
+            zoomScale = getZoomScale();
 
-    }
+        }
 
-    scale /= zoomScale;
+        scale /= zoomScale;
 
-  };
+    };
 
-  this.zoomOut = function ( zoomScale ) {
+    this.zoomOut = function(zoomScale) {
 
-    if ( zoomScale === undefined ) {
+        if (zoomScale === undefined) {
 
-      zoomScale = getZoomScale();
+            zoomScale = getZoomScale();
 
-    }
+        }
 
-    scale *= zoomScale;
+        scale *= zoomScale;
 
-  };
+    };
 
     this.pan = function(distance) {
 
@@ -178,209 +180,207 @@ THREE.OrbitControls = function ( object, domElement ) {
 
     };
 
-  this.update = function () {
+    this.update = function() {
 
-    var position = this.object.position;
-    var offset = position.clone().sub( this.center );
+        var position = this.object.position;
+        var offset = position.clone().sub(this.center);
 
-    // angle from z-axis around y-axis
+        // angle from z-axis around y-axis
 
-    var theta = Math.atan2( offset.x, offset.z );
+        var theta = Math.atan2(offset.x, offset.z);
 
-    // angle from y-axis
+        // angle from y-axis
 
-    var phi = Math.atan2( Math.sqrt( offset.x * offset.x + offset.z * offset.z ), offset.y );
+        var phi = Math.atan2(Math.sqrt(offset.x * offset.x + offset.z * offset.z), offset.y);
 
-    if ( this.autoRotate ) {
+        if (this.autoRotate) {
 
-      this.rotateLeft( getAutoRotationAngle() );
+            this.rotateLeft(getAutoRotationAngle());
 
-    }
+        }
 
-    theta += thetaDelta;
-    phi += phiDelta;
+        theta += thetaDelta;
+        phi += phiDelta;
 
-    // restrict phi to be between desired limits
-    phi = Math.max( this.minPolarAngle, Math.min( this.maxPolarAngle, phi ) );
+        // restrict phi to be between desired limits
+        phi = Math.max(this.minPolarAngle, Math.min(this.maxPolarAngle, phi));
 
-    // restrict phi to be betwee EPS and PI-EPS
-    phi = Math.max( EPS, Math.min( Math.PI - EPS, phi ) );
+        // restrict phi to be betwee EPS and PI-EPS
+        phi = Math.max(EPS, Math.min(Math.PI - EPS, phi));
 
-    var radius = offset.length() * scale;
+        var radius = offset.length() * scale;
 
-    // restrict radius to be between desired limits
-    radius = Math.max( this.minDistance, Math.min( this.maxDistance, radius ) );
+        // restrict radius to be between desired limits
+        radius = Math.max(this.minDistance, Math.min(this.maxDistance, radius));
 
-    offset.x = radius * Math.sin( phi ) * Math.sin( theta );
-    offset.y = radius * Math.cos( phi );
-    offset.z = radius * Math.sin( phi ) * Math.cos( theta );
+        offset.x = radius * Math.sin(phi) * Math.sin(theta);
+        offset.y = radius * Math.cos(phi);
+        offset.z = radius * Math.sin(phi) * Math.cos(theta);
 
-    position.copy( this.center ).add( offset );
+        position.copy(this.center).add(offset);
 
-    this.object.lookAt( this.center );
+        this.object.lookAt(this.center);
 
-    thetaDelta = 0;
-    phiDelta = 0;
-    scale = 1;
+        thetaDelta = 0;
+        phiDelta = 0;
+        scale = 1;
 
-    if ( lastPosition.distanceTo( this.object.position ) > 0 ) {
+        if (lastPosition.distanceTo(this.object.position) > 0) {
 
-      this.dispatchEvent( changeEvent );
+            this.dispatchEvent(changeEvent);
 
-      lastPosition.copy( this.object.position );
+            lastPosition.copy(this.object.position);
 
-    }
+        }
 
-  };
+    };
 
 
-  function getAutoRotationAngle() {
+    function getAutoRotationAngle() {
 
-    return 2 * Math.PI / 60 / 60 * scope.autoRotateSpeed;
-
-  }
-
-  function getZoomScale() {
-
-    return Math.pow( 0.95, scope.userZoomSpeed );
-
-  }
-
-  function onMouseDown( event ) {
-
-    if ( scope.enabled === false ) return;
-    if ( scope.userRotate === false ) return;
-
-    event.preventDefault();
-
-    if ( state === STATE.NONE )
-    {
-      if ( event.button === 0 )
-        state = STATE.ROTATE;
-      if ( event.button === 1 )
-        state = STATE.ZOOM;
-      if ( event.button === 2 )
-        state = STATE.PAN;
-    }
-    
-    
-    if ( state === STATE.ROTATE ) {
-
-      state = STATE.ROTATE;
-
-      rotateStart.set( event.clientX, event.clientY );
-
-    } else if ( state === STATE.ZOOM ) {
-
-      state = STATE.ZOOM;
-
-      zoomStart.set( event.clientX, event.clientY );
-
-    } else if ( state === STATE.PAN ) {
-
-      state = STATE.PAN;
+        return 2 * Math.PI / 60 / 60 * scope.autoRotateSpeed;
 
     }
 
-    document.addEventListener( 'mousemove', onMouseMove, false );
-    document.addEventListener( 'mouseup', onMouseUp, false );
+    function getZoomScale() {
 
-  }
-
-  function onMouseMove( event ) {
-
-    if ( scope.enabled === false ) return;
-
-    event.preventDefault();
-
-    
-    
-    if ( state === STATE.ROTATE ) {
-
-      rotateEnd.set( event.clientX, event.clientY );
-      rotateDelta.subVectors( rotateEnd, rotateStart );
-
-      scope.rotateLeft( 2 * Math.PI * rotateDelta.x / PIXELS_PER_ROUND * scope.userRotateSpeed );
-      scope.rotateUp( 2 * Math.PI * rotateDelta.y / PIXELS_PER_ROUND * scope.userRotateSpeed );
-
-      rotateStart.copy( rotateEnd );
-
-    } else if ( state === STATE.ZOOM ) {
-
-      zoomEnd.set( event.clientX, event.clientY );
-      zoomDelta.subVectors( zoomEnd, zoomStart );
-      if ( zoomDelta.y > 0 ) {
-
-        scope.zoomIn();
-
-      } else {
-
-        scope.zoomOut();
-
-      }
-
-      zoomStart.copy( zoomEnd );
-
-    } else if ( state === STATE.PAN ) {
-
-      var movementX = event.movementX || event.mozMovementX || event.webkitMovementX || 0;
-      var movementY = event.movementY || event.mozMovementY || event.webkitMovementY || 0;
-
-      scope.pan( new THREE.Vector3( - movementX, movementY, 0 ) );
+        return Math.pow(0.95, scope.userZoomSpeed);
 
     }
 
-  }
+    function onMouseDown(event) {
 
-  function onMouseUp( event ) {
+        if (scope.enabled === false) return;
+        if (scope.userRotate === false) return;
 
-    if ( scope.enabled === false ) return;
-    if ( scope.userRotate === false ) return;
+        event.preventDefault();
 
-    document.removeEventListener( 'mousemove', onMouseMove, false );
-    document.removeEventListener( 'mouseup', onMouseUp, false );
+        if (state === STATE.NONE) {
+            if (event.button === 0)
+                state = STATE.ROTATE;
+            if (event.button === 1)
+                state = STATE.ZOOM;
+            if (event.button === 2)
+                state = STATE.PAN;
+        }
 
-    state = STATE.NONE;
 
-  }
+        if (state === STATE.ROTATE) {
 
-  function onMouseWheel( event ) {
-    if ( scope.enabled === false ) return;
-    if ( scope.userZoom === false ) return;
+            state = STATE.ROTATE;
 
-    var delta = 0;
-    if ( event.wheelDelta ) { // WebKit / Opera / Explorer 9
-      delta = event.wheelDelta;
+            rotateStart.set(event.clientX, event.clientY);
 
-    } else if ( event.detail ) { // Firefox
-      delta = - event.detail;
+        } else if (state === STATE.ZOOM) {
+
+            state = STATE.ZOOM;
+
+            zoomStart.set(event.clientX, event.clientY);
+
+        } else if (state === STATE.PAN) {
+
+            state = STATE.PAN;
+
+        }
+
+        document.addEventListener('mousemove', onMouseMove, false);
+        document.addEventListener('mouseup', onMouseUp, false);
 
     }
-    if (( delta > 0 )&&(total>0)) {
 
-      scope.zoomIn();
-      total=total-delta;
-      console.log("zooming out",delta,total);
+    function onMouseMove(event) {
 
-    } else if((delta<0)&&(total<20)){
+        if (scope.enabled === false) return;
 
-      scope.zoomOut();
-      total=total-delta;
-      console.log("zoom in",delta,total);
+        event.preventDefault();
+
+
+
+        if (state === STATE.ROTATE) {
+
+            rotateEnd.set(event.clientX, event.clientY);
+            rotateDelta.subVectors(rotateEnd, rotateStart);
+
+            scope.rotateLeft(2 * Math.PI * rotateDelta.x / PIXELS_PER_ROUND * scope.userRotateSpeed);
+            scope.rotateUp(2 * Math.PI * rotateDelta.y / PIXELS_PER_ROUND * scope.userRotateSpeed);
+
+            rotateStart.copy(rotateEnd);
+
+        } else if (state === STATE.ZOOM) {
+
+            zoomEnd.set(event.clientX, event.clientY);
+            zoomDelta.subVectors(zoomEnd, zoomStart);
+            if (zoomDelta.y > 0) {
+
+                scope.zoomIn();
+
+            } else {
+
+                scope.zoomOut();
+
+            }
+
+            zoomStart.copy(zoomEnd);
+
+        } else if (state === STATE.PAN) {
+
+            var movementX = event.movementX || event.mozMovementX || event.webkitMovementX || 0;
+            var movementY = event.movementY || event.mozMovementY || event.webkitMovementY || 0;
+
+            scope.pan(new THREE.Vector3(-movementX, movementY, 0));
+
+        }
 
     }
-    else{
-        return;
+
+    function onMouseUp(event) {
+
+        if (scope.enabled === false) return;
+        if (scope.userRotate === false) return;
+
+        document.removeEventListener('mousemove', onMouseMove, false);
+        document.removeEventListener('mouseup', onMouseUp, false);
+
+        state = STATE.NONE;
+
     }
 
-  }
+    function onMouseWheel(event) {
+        if (scope.enabled === false) return;
+        if (scope.userZoom === false) return;
 
-  function onKeyDown( event ) {
+        var delta = 0;
+        if (event.wheelDelta) { // WebKit / Opera / Explorer 9
+            delta = event.wheelDelta;
 
-    if ( scope.enabled === false ) return;
-    if ( scope.userPan === false ) return;
+        } else if (event.detail) { // Firefox
+            delta = -event.detail;
 
-    switch (event.keyCode) {
+        }
+        if ((delta > 0) && (total > 0)) {
+
+            scope.zoomIn();
+            total = total - delta;
+            console.log("zooming out", delta, total);
+
+        } else if ((delta < 0) && (total < 20)) {
+
+            scope.zoomOut();
+            total = total - delta;
+            console.log("zoom in", delta, total);
+
+        } else {
+            return;
+        }
+
+    }
+
+    function onKeyDown(event) {
+
+        if (scope.enabled === false) return;
+        if (scope.userPan === false) return;
+
+        switch (event.keyCode) {
 
             case scope.keys.UP:
                 scope.pan(new THREE.Vector3(0, 0, -1));
@@ -394,6 +394,12 @@ THREE.OrbitControls = function ( object, domElement ) {
             case scope.keys.RIGHT:
                 scope.pan(new THREE.Vector3(1, 0, 0));
                 break;
+
+            // case 67:
+            //     app.renderer.setCameraPosition(6.3, 31.5, 18.5);
+            //     scale = 0.1;
+            //     break;
+
 
             case scope.keys.ASCEND:
                 scope.pan(new THREE.Vector3(0, 1, 0));
@@ -412,30 +418,32 @@ THREE.OrbitControls = function ( object, domElement ) {
                 state = STATE.PAN;
                 break;
 
+        }
+
     }
 
-  }
-  
-  function onKeyUp( event ) {
+    function onKeyUp(event) {
 
-    switch ( event.keyCode ) {
+        switch (event.keyCode) {
 
-      case scope.keys.ROTATE:
-      case scope.keys.ZOOM:
-      case scope.keys.PAN:
-        state = STATE.NONE;
-        break;
+            case scope.keys.ROTATE:
+            case scope.keys.ZOOM:
+            case scope.keys.PAN:
+                state = STATE.NONE;
+                break;
+        }
+
     }
 
-  }
-
-  this.domElement.addEventListener( 'contextmenu', function ( event ) { event.preventDefault(); }, false );
-  this.domElement.addEventListener( 'mousedown', onMouseDown, false );
-  this.domElement.addEventListener( 'mousewheel', onMouseWheel, false );
-  this.domElement.addEventListener( 'DOMMouseScroll', onMouseWheel, false ); // firefox
-  window.addEventListener( 'keydown', onKeyDown, false );
-  window.addEventListener( 'keyup', onKeyUp, false );
+    this.domElement.addEventListener('contextmenu', function(event) {
+        event.preventDefault();
+    }, false);
+    this.domElement.addEventListener('mousedown', onMouseDown, false);
+    this.domElement.addEventListener('mousewheel', onMouseWheel, false);
+    this.domElement.addEventListener('DOMMouseScroll', onMouseWheel, false); // firefox
+    window.addEventListener('keydown', onKeyDown, false);
+    window.addEventListener('keyup', onKeyUp, false);
 
 };
 
-THREE.OrbitControls.prototype = Object.create( THREE.EventDispatcher.prototype );
+THREE.OrbitControls.prototype = Object.create(THREE.EventDispatcher.prototype);
