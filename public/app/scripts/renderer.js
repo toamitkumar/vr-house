@@ -98,7 +98,7 @@ app.renderer = (function() {
         var bedLight = new THREE.PointLight(color, intensity, penetration);
         bedLight.position.set(x, y, z);
         scene.add(bedLight);
-        scene.add(new THREE.PointLightHelper(bedLight, 2.5));
+        //scene.add(new THREE.PointLightHelper(bedLight, 2.5));
     }
 
     function setLighting() {
