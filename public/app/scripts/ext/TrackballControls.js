@@ -25,7 +25,7 @@ THREE.OrbitControls = function(object, domElement) {
 
 
   this.userPan = true;
-  this.userPanSpeed = 0.2;
+  this.userPanSpeed = 0.4;
 
 
     this.autoRotate = false;
@@ -67,7 +67,7 @@ THREE.OrbitControls = function(object, domElement) {
 
     var phiDelta = 0;
     var thetaDelta = 0;
-    var scale = 0.1;
+    var scale = 0.001;
 
     var lastPosition = new THREE.Vector3();
 
@@ -356,7 +356,8 @@ THREE.OrbitControls = function(object, domElement) {
      delta = - event.detail;    }
    if (( delta > 0 )&&(total>0)) {      scope.zoomIn();
      total=total-delta;
-     console.log("zooming out",delta,total);    } else if((delta<0)&&(total<30)){      scope.zoomOut();
+     console.log("zooming out",delta,total); 
+     console.log(scale);   } else if((delta<0)&&(total<30)){      scope.zoomOut();
      total=total-delta;
      console.log("zoom in",delta,total);    }
    else if(total>30){
@@ -393,10 +394,10 @@ THREE.OrbitControls = function(object, domElement) {
                 scope.pan(new THREE.Vector3(1, 0, 0));
                 break;
 
-            // case 67:
-            //     app.renderer.setCameraPosition(6.3, 31.5, 18.5);
-            //     scale = 0.1;
-            //     break;
+            case 67:
+                app.renderer.setCameraPosition(6.3, 31.5, 18.5);
+                console.log(scale);
+            break;
 
 
             case scope.keys.ASCEND:

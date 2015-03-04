@@ -31,7 +31,7 @@ app.renderer = (function() {
         // Create a camera, zoom it out from the model a bit, and add it to the scene.
 
         camera = new THREE.PerspectiveCamera(60, WIDTH / HEIGHT, 0.1, 100000);
-        camera.position.set(-55.4, 1.0, -12.4);
+        camera.position.set(-550.4, 1.0, -20.4);
         scene.add(camera);
 
         //scenecube
@@ -194,13 +194,14 @@ app.renderer = (function() {
         return camera.position;
     }
 
-    // function setCameraPosition(x,y,z){
-    //     camera.lookAt(new THREE.);
-    // }
+    function setCameraPosition(x,y,z){
+       camera.position.set(x,y,z);
+    }
 
     return {
         init: init,
         animate: animate,
-        getCameraPosition: getCameraPosition
+        getCameraPosition: getCameraPosition,
+        setCameraPosition: setCameraPosition
     };
 })();
