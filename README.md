@@ -15,19 +15,19 @@ And then run:
 
 Run --> http://localhost:5000
 
-``
-C -> Aerial View
-B -> Exit Aerial View
 
-Arrow keys -> left/right/forward/backward
-U -> Ascend
-J -> Descend
+## Steps to navigate
 
-abhimanyuarya [3:36 PM]
+```
+c -> Aerial View
+b -> Exit Aerial View
+
+left/right/forward/backward
+u -> Ascend
+j -> Descend
+
 On mouse click and move : rotate view
-
-Zoom only in aerial view through mouse scroll
-``
+```
 
 ## Contributing
 
