@@ -1,12 +1,12 @@
 {
-  "name": "web_display_app",
+  "name": "Vortual-Reality3d",
   "version": "1.0.0",
   "description": "",
   "main": "Gruntfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Virtual House Team",
   "license": "ISC",
   "devDependencies": {
     "grunt": "^0.4.5",

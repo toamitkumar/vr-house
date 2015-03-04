@@ -1,12 +1,12 @@
 {
-  "name": "Cool-House3d",
+  "name": "Vortual-Reality3d",
   "version": "1.0.0",
-  "description": "Cool House using ThreeJS",
+  "description": "Virtual House using ThreeJS",
   "engine": "node >= 0.10.26",
   "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sohamkamani/cool-house.git"
+    "url": "https://github.com/toamitkumar/vr-house.git"
   },
   "scripts": {
     "start": "node server.js",
@@ -15,7 +15,7 @@
   "keywords": [
     "house 3d"
   ],
-  "author": "Cool House Team",
+  "author": "Virtual House Team",
   "license": "ISC",
   "dependencies": {
     "async": "*",
