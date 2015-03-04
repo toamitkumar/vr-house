@@ -1,0 +1,38 @@
+
+# Virtual Reality --> House
+
+Blender + ThreeJS + WebGL
+
+## Installation
+
+  `$ npm install && cd public npm install && bower install && grunt build`
+
+And then run:
+
+  `$ npm start`
+
+## Usage
+
+Run --> http://localhost:5000
+
+``
+C -> Aerial View
+B -> Exit Aerial View
+
+Arrow keys -> left/right/forward/backward
+U -> Ascend
+J -> Descend
+
+abhimanyuarya [3:36 PM]
+On mouse click and move : rotate view
+
+Zoom only in aerial view through mouse scroll
+``
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Added some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
