@@ -32,7 +32,7 @@ app.renderer = (function() {
     // Create a camera, zoom it out from the model a bit, and add it to the scene.
 
     camera = new THREE.PerspectiveCamera(60, WIDTH / HEIGHT, 0.1, 100000);
-    camera.position.set(-550.4, 1.0, -20.4);
+    camera.position.set(46, 161.0, 41.4);
     scene.add(camera);
 
     //scenecube
@@ -56,7 +56,7 @@ app.renderer = (function() {
 
     var loader = new THREE.JSONLoader();
 
-    loader.load('hfinal.json', function(geometry, materials) {
+    loader.load('hmain.json', function(geometry, materials) {
       var material = new THREE.MeshFaceMaterial(materials);
       var mesh = new THREE.Mesh(geometry, material);
       mesh.scale.set(1, 1, 1);
@@ -66,7 +66,7 @@ app.renderer = (function() {
     });
 
     // Add OrbitControls so that we can pan around with the mouse.
-    //controls = new THREE.OrbitControls(camera, renderer.domElement);
+   // controls = new THREE.OrbitControls(camera, renderer.domElement);
     controlsCube = new THREE.OrbitControls(cameraCube, renderer.domElement);
 
     //Adding cubebackground
@@ -90,7 +90,7 @@ app.renderer = (function() {
 
     });
 
-    var mesh = new THREE.Mesh(new THREE.BoxGeometry(100000, 100000, 100000), material);
+    var mesh = new THREE.Mesh(new THREE.BoxGeometry(10000, 10000, 10000), material);
     sceneCube.add(mesh);
 
   }
@@ -99,7 +99,7 @@ app.renderer = (function() {
     var bedLight = new THREE.PointLight(color, intensity, penetration);
     bedLight.position.set(x, y, z);
     scene.add(bedLight);
-    //scene.add(new THREE.PointLightHelper(bedLight, 2.5));
+    scene.add(new THREE.PointLightHelper(bedLight, 2.5));
   }
 
   function setLighting() {
@@ -107,60 +107,21 @@ app.renderer = (function() {
     // dirLight.position.set(3000, 100, 3000);
     // scene.add(dirLight);
 
-    var bedLight = new THREE.PointLight(0xffffff, 2.5, 11);
-    bedLight.position.set(0, 10, 5);
-    scene.add(bedLight);
-    //scene.add(new THREE.PointLightHelper(bedLight, 2.5));
-
-
-    addPointLight(0, 0.5, 5, 0xffffff, 2.5, 11);
-    addPointLight(-5, 0.5, -1, 0xffffff, 1, 5);
-    //addPointLight(-8.4, 0.5, 6 , 0xffffff, 2.5, 11);
-    addPointLight(3.2, 0.5, -1.3, 0xffffff, 2.5, 11);
-    addPointLight(-17.6, 2.6, -3.15, 0xffffff, 2.5, 10);
-    addPointLight(-8.6, 2.0, -0.3, 0xffffff, 2.0, 10);
-
-
-
-
-    var bedLight2 = new THREE.PointLight(0xffffff, 2.5, 11);
-    bedLight2.position.set(-5, 10, -1);
-    scene.add(bedLight2);
-    //scene.add(new THREE.PointLightHelper(bedLight2, 2.5));
-
-    var bedLight3 = new THREE.PointLight(0xffffff, 2.5, 11);
-    bedLight3.position.set(-8.4, 10, 6);
-    scene.add(bedLight3);
-    //scene.add(new THREE.PointLightHelper(bedLight3, 2.5));
-
-    var bedLight4 = new THREE.PointLight(0xffffff, 2.5, 11);
-    bedLight4.position.set(3.2, 10.3, -1.3);
-    scene.add(bedLight4);
-    //scene.add(new THREE.PointLightHelper(bedLight4, 2.5));
-
-
-
-    addPointLight(8, 2, 19.5, 0xffffff, 2.5, 11);
-    addPointLight(1.1, 2, 14.6, 0xffffff, 2.5, 11);
-    addPointLight(10.1, 2, 14.6, 0xffffff, 2.5, 11);
-    //addPointLight(-8.4, 0.5, 6 , 0xffffff, 2.5, 11);
-    addPointLight(2.4, 7.4, 13, 0xffffff, 1.5, 5);
-    addPointLight(-10.06, 1.5, 4.3, 0xffffff, 1.5, 5);
-    addPointLight(0.11, 4.8, 18.1, 0xffffff, 1.5, 10);
-    addPointLight(6.2, 4.3, 9.8, 0xffffff, 1.5, 10);
-
-
-
-
-    // var lightPoint1 = new THREE.PointLight(0xffffff, 3, 150);
-    // lightPoint1.position.set(70, 5, 70);
-    // scene.add(lightPoint1);
-    // scene.add(new THREE.PointLightHelper(lightPoint1, 3));
-
-    // var lightPoint2 = new THREE.PointLight(0xffffff, 3, 150);
-    // lightPoint2.position.set(-60,30,-70);
-    // scene.add(lightPoint2);
-    // scene.add(new THREE.PointLightHelper(lightPoint2, 3));
+    addPointLight(38.8, 4.9, 49.5, 0xffffff, 3, 50); //Kitchen Center Light
+    addPointLight(20.8, 4.9, 55, 0xffffff, 1, 50); //kitchen 
+    addPointLight(5, 30, 19, 0xffffff, 2, 50); //bed (above bed)
+    addPointLight(5, 34, -10, 0xffffff, 2, 50); //bed center
+    addPointLight(-20, 30, -10, 0xffffff, 2.5, 50); //bed side wall window
+    addPointLight(5, 34, -30, 0xffffff, 2, 30); //bed side wall table
+    addPointLight(4, -10, -10, 0xffffff, 2.5, 50); // living room center
+    addPointLight(-75, -2, -52, 0xffffff, 2, 100); //pool lamp post
+    addPointLight(-80, -2, -58, 0xffffff, 2, 50); //pool lamp post
+    addPointLight(-30, -10, -10, 0xffffff, 3, 50); //entrance
+    addPointLight(70, 0, -28, 0xffffff, 2.5, 50); //starircase lower flight
+    addPointLight(50, 15, -28, 0xffffff, 2, 30); //starircase upper flight
+    addPointLight(34, -10, 6, 0xffffff, 2.5, 50); //living room kitchen
+    addPointLight(60, 2.9, 80, 0xffffff, 1.5, 40); //kitchen shelf
+    addPointLight(60, 2.9, 60, 0xffffff, 2, 40); //kitchen cabinets
 
     var ambLight = new THREE.AmbientLight(0xffffff);
     scene.add(ambLight);
@@ -177,16 +138,14 @@ app.renderer = (function() {
   function animate() {
 
     cameraCube.rotation.copy(camera.rotation);
-
-    // Read more about requestAnimationFrame at http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
     requestAnimationFrame(animate);
-
+    cameraUpdate();
     // Render the scene.
     renderer.clear();
     renderer.render(sceneCube, cameraCube);
     renderer.render(scene, camera);
-    cameraUpdate();
-    //controls.update();
+
+   // controls.update();
     controlsCube.update();
 
   }
