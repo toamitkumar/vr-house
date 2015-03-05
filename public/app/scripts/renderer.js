@@ -4,6 +4,7 @@ app.renderer = (function() {
     var scene, camera, renderer, controls, controlsCube, sceneCube, cameraCube;
     var keyboard = new THREEx.KeyboardState();
     var clock = new THREE.Clock();
+    var flag = true;
     // init();
     // animate();
 
@@ -159,37 +160,51 @@ app.renderer = (function() {
         var rotateAngle = Math.PI / 2 * delta; // pi/2 radians (90 degrees) per second
         // local transformations
         // move forwards/backwards/left/right
-        if (keyboard.pressed("W") || keyboard.pressed("up"))
+        if (keyboard.pressed('up'))
             camera.translateZ(-moveDistance);
-        if (keyboard.pressed("S") || keyboard.pressed("down"))
+        if (keyboard.pressed('down'))
             camera.translateZ(moveDistance);
-        if (keyboard.pressed("Q"))
+        if (keyboard.pressed('Q'))
             camera.translateX(-moveDistance);
-        if (keyboard.pressed("E"))
+        if (keyboard.pressed('E'))
             camera.translateX(moveDistance);
-        if (keyboard.pressed("R"))
+        if (keyboard.pressed('R'))
             camera.translateY(moveDistance);
-        if (keyboard.pressed("F"))
+        if (keyboard.pressed('F'))
             camera.translateY(-moveDistance);
 
-        if (keyboard.pressed("B")) { //bedroom
+        if (keyboard.pressed('B')) { //bedroom
+          flag = true;
             camera.position.set(26,17,-34);
             camera.lookAt(new THREE.Vector3(-34,17,16));
         }
-        if (keyboard.pressed("V")) { //Entrance
+        if (keyboard.pressed('V')) { //Entrance
+          flag=true;
             camera.position.set(-25,-16,-9);
             camera.lookAt(new THREE.Vector3(70,-16,-9));
         }
+
+        if (keyboard.pressed('C')) { //Entrance
+          flag=false;
+            camera.position.set(74,75,-42.6);
+            camera.lookAt(new THREE.Vector3(20,13,11));
+        }
         // rotate left/right/up/down
         var rotation_matrix = new THREE.Matrix4().identity();
-        if (keyboard.pressed("A") || keyboard.pressed("left"))
+        if (keyboard.pressed('A') || keyboard.pressed('left'))
             camera.rotateOnAxis(new THREE.Vector3(0, 1, 0), rotateAngle);
-        if (keyboard.pressed("D") || keyboard.pressed("right"))
+        if (keyboard.pressed('D') || keyboard.pressed('right'))
             camera.rotateOnAxis(new THREE.Vector3(0, 1, 0), -rotateAngle);
-        // if (keyboard.pressed("W"))
-        //   camera.rotateOnAxis(new THREE.Vector3(1, 0, 0), rotateAngle);
-        // if (keyboard.pressed("S"))
-        //   camera.rotateOnAxis(new THREE.Vector3(1, 0, 0), -rotateAngle);
+         if (keyboard.pressed("W")){
+          if(flag===false){
+           camera.rotateOnAxis(new THREE.Vector3(1, 0, 0), rotateAngle);
+          }
+        }
+         if (keyboard.pressed("S")){
+          if(flag===false){
+           camera.rotateOnAxis(new THREE.Vector3(1, 0, 0), -rotateAngle);
+          }
+        }
         // if (keyboard.pressed("Z")) {
         //   camera.position.set(0, 25.1, 0);
         //   camera.rotation.set(0, 0, 0);
@@ -202,6 +217,7 @@ app.renderer = (function() {
     }
 
     function ensureBoundaryConditions() {
+      if(flag === true){
         if (camera.position.x < -106) {
             camera.position.setX(-105);
         } else if (camera.position.x > 75) {
@@ -215,6 +231,7 @@ app.renderer = (function() {
         } else if (camera.position.y > 75) {
             camera.position.setY(74);
         }
+      }
     }
 
     function getCameraPosition() {
