@@ -381,18 +381,18 @@ THREE.OrbitControls = function(object, domElement) {
 
         switch (event.keyCode) {
 
-            case scope.keys.UP:
-                scope.pan(new THREE.Vector3(0, 0, -1));
-                break;
-            case scope.keys.BOTTOM:
-                scope.pan(new THREE.Vector3(0, 0, 1));
-                break;
-            case scope.keys.LEFT:
-                scope.pan(new THREE.Vector3(-1, 0, 0));
-                break;
-            case scope.keys.RIGHT:
-                scope.pan(new THREE.Vector3(1, 0, 0));
-                break;
+            // case scope.keys.UP:
+            //     scope.pan(new THREE.Vector3(0, 0, -1));
+            //     break;
+            // case scope.keys.BOTTOM:
+            //     scope.pan(new THREE.Vector3(0, 0, 1));
+            //     break;
+            // case scope.keys.LEFT:
+            //     scope.pan(new THREE.Vector3(-1, 0, 0));
+            //     break;
+            // case scope.keys.RIGHT:
+            //     scope.pan(new THREE.Vector3(1, 0, 0));
+            //     break;
 
             case 67:
                 app.renderer.setCameraPosition(6.3, 31.5, 18.5);
@@ -406,12 +406,12 @@ THREE.OrbitControls = function(object, domElement) {
             break;
 
 
-            case scope.keys.ASCEND:
-                scope.pan(new THREE.Vector3(0, 1, 0));
-                break;
-            case scope.keys.DESCEND:
-                scope.pan(new THREE.Vector3(0, -1, 0));
-                break;
+            // case scope.keys.ASCEND:
+            //     scope.pan(new THREE.Vector3(0, 1, 0));
+            //     break;
+            // case scope.keys.DESCEND:
+            //     scope.pan(new THREE.Vector3(0, -1, 0));
+            //     break;
 
             case scope.keys.ROTATE:
                 state = STATE.ROTATE;
