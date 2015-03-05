@@ -121,7 +121,7 @@ app.renderer = (function() {
 
 
 
-
+        //dwefgfe
         var bedLight2 = new THREE.PointLight(0xffffff, 2.5, 11);
         bedLight2.position.set(-5, 10, -1);
         scene.add(bedLight2);
