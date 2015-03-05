@@ -32,7 +32,8 @@ app.renderer = (function() {
     // Create a camera, zoom it out from the model a bit, and add it to the scene.
 
     camera = new THREE.PerspectiveCamera(60, WIDTH / HEIGHT, 0.1, 100000);
-    camera.position.set(46, 161.0, 41.4);
+    camera.position.set(-47, -11, -6);
+    //camera.lookAt(-9, -11 , -6);
     scene.add(camera);
 
     //scenecube
@@ -66,7 +67,7 @@ app.renderer = (function() {
     });
 
     // Add OrbitControls so that we can pan around with the mouse.
-   // controls = new THREE.OrbitControls(camera, renderer.domElement);
+    // controls = new THREE.OrbitControls(camera, renderer.domElement);
     controlsCube = new THREE.OrbitControls(cameraCube, renderer.domElement);
 
     //Adding cubebackground
@@ -140,12 +141,13 @@ app.renderer = (function() {
     cameraCube.rotation.copy(camera.rotation);
     requestAnimationFrame(animate);
     cameraUpdate();
+    ensureBoundaryConditions();
     // Render the scene.
     renderer.clear();
     renderer.render(sceneCube, cameraCube);
     renderer.render(scene, camera);
 
-   // controls.update();
+    // controls.update();
     controlsCube.update();
 
   }
@@ -156,9 +158,9 @@ app.renderer = (function() {
     var rotateAngle = Math.PI / 2 * delta; // pi/2 radians (90 degrees) per second
     // local transformations
     // move forwards/backwards/left/right
-    if (keyboard.pressed("W"))
+    if (keyboard.pressed("W") || keyboard.pressed("up"))
       camera.translateZ(-moveDistance);
-    if (keyboard.pressed("S"))
+    if (keyboard.pressed("S") || keyboard.pressed("down"))
       camera.translateZ(moveDistance);
     if (keyboard.pressed("Q"))
       camera.translateX(-moveDistance);
@@ -170,13 +172,13 @@ app.renderer = (function() {
       camera.translateY(-moveDistance);
     // rotate left/right/up/down
     var rotation_matrix = new THREE.Matrix4().identity();
-    if (keyboard.pressed("A"))
+    if (keyboard.pressed("A") || keyboard.pressed("left"))
       camera.rotateOnAxis(new THREE.Vector3(0, 1, 0), rotateAngle);
-    if (keyboard.pressed("D"))
+    if (keyboard.pressed("D") || keyboard.pressed("right"))
       camera.rotateOnAxis(new THREE.Vector3(0, 1, 0), -rotateAngle);
-    // if (keyboard.pressed("R"))
+    // if (keyboard.pressed("W"))
     //   camera.rotateOnAxis(new THREE.Vector3(1, 0, 0), rotateAngle);
-    // if (keyboard.pressed("F"))
+    // if (keyboard.pressed("S"))
     //   camera.rotateOnAxis(new THREE.Vector3(1, 0, 0), -rotateAngle);
     // if (keyboard.pressed("Z")) {
     //   camera.position.set(0, 25.1, 0);
@@ -187,6 +189,22 @@ app.renderer = (function() {
     // camera.position.x = cameraOffset.x;
     // camera.position.y = cameraOffset.y;
     // camera.position.z = cameraOffset.z;
+  }
+
+  function ensureBoundaryConditions() {
+    if (camera.position.x < -106) {
+      camera.position.setX(-105);
+    } else if (camera.position.x >75) {
+      camera.position.setX(74);
+    }else if (camera.position.z < -43) {
+      camera.position.setZ(-42);
+    }else if (camera.position.z >89) {
+      camera.position.setZ(88);
+    }else if (camera.position.y < -24) {
+      camera.position.setY(-23);
+    }else if (camera.position.y > 75) {
+      camera.position.setY(74);
+    }
   }
 
   function getCameraPosition() {
