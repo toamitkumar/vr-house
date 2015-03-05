@@ -116,6 +116,11 @@ app.renderer = (function() {
         addPointLight(-75, -2, -52, 0xffffff, 2, 100);//pool lamp post
         addPointLight(-80, -2, -58, 0xffffff, 2, 50);//pool lamp post
         addPointLight(-30, -10, -10, 0xffffff, 3, 50);//entrance
+        addPointLight(70, 0, -28, 0xffffff, 2.5, 50);//starircase lower flight
+        addPointLight(50, 15, -28, 0xffffff, 2, 30);//starircase upper flight
+        addPointLight(34, -10, 6, 0xffffff, 2.5, 50);//living room kitchen
+        addPointLight(60, 2.9, 80, 0xffffff, 1.5, 40);//kitchen shelf
+        addPointLight(60, 2.9, 60, 0xffffff, 2, 40);//kitchen cabinets
 
         var ambLight = new THREE.AmbientLight(0xffffff);
         scene.add(ambLight);
