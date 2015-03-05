@@ -25,7 +25,7 @@ THREE.OrbitControls = function(object, domElement) {
 
 
   this.userPan = true;
-  this.userPanSpeed = 0.4;
+  this.userPanSpeed = 1;
 
 
     this.autoRotate = false;
@@ -67,7 +67,7 @@ THREE.OrbitControls = function(object, domElement) {
 
     var phiDelta = 0;
     var thetaDelta = 0;
-    var scale = 0.001;
+    var scale = 1;
 
     var lastPosition = new THREE.Vector3();
 
@@ -161,21 +161,21 @@ THREE.OrbitControls = function(object, domElement) {
     this.pan = function(distance) {
 
 
-        if (app.renderer.getCameraPosition().y < 0) {
-            distance = new THREE.Vector3(0, 1, 0);
-        } else if (app.renderer.getCameraPosition().y > 62) {
-            distance = new THREE.Vector3(0, -1, 0);
-        } else if (app.renderer.getCameraPosition().x > 9.8) {
-            distance = new THREE.Vector3(-1, 0, 0);
-        } else if (app.renderer.getCameraPosition().x < -18) {
-            distance = new THREE.Vector3(1, 0, 0);
-        } else if (app.renderer.getCameraPosition().z < -3.5) {
-            distance = new THREE.Vector3(0, 0, 1);
-        } else if (app.renderer.getCameraPosition().z > 20.9) {
-            distance = new THREE.Vector3(0, 0, -1);
-        } else {
+        // if (app.renderer.getCameraPosition().y < 0) {
+        //     distance = new THREE.Vector3(0, 1, 0);
+        // } else if (app.renderer.getCameraPosition().y > 62) {
+        //     distance = new THREE.Vector3(0, -1, 0);
+        // } else if (app.renderer.getCameraPosition().x > 9.8) {
+        //     distance = new THREE.Vector3(-1, 0, 0);
+        // } else if (app.renderer.getCameraPosition().x < -18) {
+        //     distance = new THREE.Vector3(1, 0, 0);
+        // } else if (app.renderer.getCameraPosition().z < -3.5) {
+        //     distance = new THREE.Vector3(0, 0, 1);
+        // } else if (app.renderer.getCameraPosition().z > 20.9) {
+        //     distance = new THREE.Vector3(0, 0, -1);
+        // } else {
             distance.transformDirection(this.object.matrix);
-        }
+        // }
         distance.multiplyScalar(scope.userPanSpeed);
         console.log("ecw"+scope.userPanSpeed);
         this.object.position.add(distance);
@@ -381,37 +381,27 @@ THREE.OrbitControls = function(object, domElement) {
 
         switch (event.keyCode) {
 
-            case scope.keys.UP:
-                scope.pan(new THREE.Vector3(0, 0, -1));
-                break;
-            case scope.keys.BOTTOM:
-                scope.pan(new THREE.Vector3(0, 0, 1));
-                break;
-            case scope.keys.LEFT:
-                scope.pan(new THREE.Vector3(-1, 0, 0));
-                break;
-            case scope.keys.RIGHT:
-                scope.pan(new THREE.Vector3(1, 0, 0));
-                break;
-
-            case 67:
-                app.renderer.setCameraPosition(6.3, 31.5, 18.5);
-                console.log(scale);
-            break;
-            
-            case 66:
-                app.renderer.setCameraPosition(-550.4, 1.0, -20.4);
-                console.log(scale);
-                scale=0.001;
-            break;
+            // case scope.keys.UP:
+            //     scope.pan(new THREE.Vector3(0, 0, -1));
+            //     break;
+            // case scope.keys.BOTTOM:
+            //     scope.pan(new THREE.Vector3(0, 0, 1));
+            //     break;
+            // case scope.keys.LEFT:
+            //     scope.pan(new THREE.Vector3(-1, 0, 0));
+            //     break;
+            // case scope.keys.RIGHT:
+            //     scope.pan(new THREE.Vector3(1, 0, 0));
+            //     break;
 
 
-            case scope.keys.ASCEND:
-                scope.pan(new THREE.Vector3(0, 1, 0));
-                break;
-            case scope.keys.DESCEND:
-                scope.pan(new THREE.Vector3(0, -1, 0));
-                break;
+
+            // case scope.keys.ASCEND:
+            //     scope.pan(new THREE.Vector3(0, 1, 0));
+            //     break;
+            // case scope.keys.DESCEND:
+            //     scope.pan(new THREE.Vector3(0, -1, 0));
+            //     break;
 
             case scope.keys.ROTATE:
                 state = STATE.ROTATE;
